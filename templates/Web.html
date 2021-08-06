@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<body>
+<style>
+      body {
+       padding: 15px;
+      }
+      .label {
+        font-size: 20px;
+        font-weight: 100;
+        color: #3770EA;
+
+      }
+      input {
+        width: 50%;
+        height: 20px;
+        padding: 4px 10px;
+        border: 1px solid #666;
+        background: rgb(255,255,255);
+        color: rgb(0,0,125);
+        font-size: 20px;
+        text-align: right;
+      }
+ .title{
+ border-radius:20px;
+ color:#33AAFF;
+ text-align: right;
+ }
+ button{
+ padding:0;
+ }
+</style>
+
+
+
+<h2 style="text-align: right;">תכנון הנסיעה</h2>
+
+
+
+
+<h3 class="title" style=" " >:הכנס כתובת התחלה</h3>
+<input style="float: right;"type="text" id="fname1" placeholder="הקלד כתובת כאן"  name="fname1" >
+<br>
+<br>
+
+
+<h3 style="text-align: right;">:הכנס כתובת נוספת</h3>
+<input  style="float: right;" type="text" id="fname2" placeholder="הקלד כתובת כאן" name="fname2" >
+<br>
+<br>
+<br>
+    <script>
+        const locations=[]
+        function addFunction()
+        {
+            const location=document.getElementById("fname2")
+            locations.push(location.value)
+            console.log(locations)
+            location.value=""
+
+        }
+        function endFunction()
+        {
+            console.log("end")
+            locations.push(document.getElementById("fname2").value)
+            locations.unshift(document.getElementById("fname1").value)
+
+            document.location.href="/map?cities="+locations.reduce((x,y)=>x+`,${y}`)
+
+
+        }
+    </script>
+<button style="float: right;" id="add" onclick="addFunction()">הוסף יעד</button>
+
+
+
+<br>
+<br>
+<br>
+<br>
+<button style="float: right; background-color:powderblue;" class="title" onclick="endFunction()">סיום תכנון הנסיעה</button>
+</div>
+
+</body>
+
+</html>
+
